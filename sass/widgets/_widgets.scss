@@ -1,0 +1,43 @@
+$widgets: 'widget_recent_entries', 'widget_recent_comments', 'widget_meta', 'widget_archive', 'widget_pages', 'widget_categories';
+
+@each $widget in $widgets {
+    .#{$widget} ul {
+        margin: 0; padding: 0; list-style: none;
+        
+        li {
+	        border-bottom: 1px solid rgba( $gray, .2 );
+			line-height: 3;
+			padding: 0 0 0 $gitter / 2;
+			
+			a {
+				padding: 0 0 0 $gitter / 2;
+			}
+			&:last-child {
+				border-bottom: 0;
+			}
+        }
+    }
+
+    $widgets: $widget - 1;
+}
+
+h3.widget-title {	margin: 0; padding: 0; list-style: none;}
+
+.widget {
+	h3.widget-title {
+		padding: 0 0 0 $gitter / 2;
+		font-size: 18px;
+		background: rgba( $gray, .2 );
+		line-height: 3;
+		@include border-radius( $border-radius );
+	}
+}
+
+// wp calendar
+
+.widget_calendar #calendar_wrap {
+	padding: $gitter / 3 $gitter / 2;
+}
+#wp-calendar {
+	width: 100%;
+}

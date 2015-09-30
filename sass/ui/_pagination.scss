@@ -1,0 +1,21 @@
+ul.pagination {
+	
+	li {
+		
+		a, span {
+			color: $blue;
+			border: 1px solid $gray;
+			
+			&:hover, &:focus {
+				background-color: rgba( $gray, .2 );
+				border-color: $gray;
+				color: $blue;
+			}
+		}
+		
+		&.active a, &.active span {
+			background-color: $blue;
+			border-color: $blue;
+		}
+	}
+}

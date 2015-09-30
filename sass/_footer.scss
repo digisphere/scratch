@@ -1,0 +1,18 @@
+
+#footer {
+	border-top: 1px solid #eee;
+	padding: $gitter / 2 0;
+	nav.nav {
+		text-align: center;
+		margin-top: 5px;
+	}
+	ul.footer-menu {
+		display: inline-block;
+	}
+	ul.footer-menu li {
+		float: left;
+	}
+	ul.footer-menu li a {
+		padding: 5px $gitter;
+	}
+}

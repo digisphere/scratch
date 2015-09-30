@@ -1,0 +1,87 @@
+
+$header-height: 80px;
+
+#header {
+	height: $header-height;
+	
+	.navbar-toggle {
+		margin-top: ($header-height - 34) / 2;
+		margin-bottom: 0;
+	}
+}
+
+#the-logo {
+	float: left;
+	overflow: hidden;
+	
+	a {
+		&.logo-text {
+			font-size: 24px;
+			line-height: $header-height;
+			text-transform: uppercase;
+		
+			&:hover, &:focus {
+				text-decoration: none;
+			}
+		}
+		&.logo-image {
+			display: block;
+			text-indent: -9999px;
+			height: $header-height;
+			min-width: 120px;
+			background-size: contain;
+		}
+	}
+}
+
+// main navigation
+
+#nav-container {
+	float: right;
+	
+	.navbar-nav li {
+		a {
+			padding: 0 $gitter;
+			display: block;
+			color: white;
+			line-height: $header-height;
+			@include border-radius( 0 );
+			@include transition( all 250ms ease );
+		}
+		.sub-menu {
+			margin: 0;	padding: 0;
+			list-style: none;
+			position: absolute;
+			min-width: 160px;
+			max-height: 0;
+			font-size: 90%;
+			overflow: hidden;
+			background: lighten($gray, 10%);
+			@include transition( all 500ms ease );
+			
+			li {
+				a {
+					color: $blue;
+					line-height: $golden-ratio;
+					padding: 5px $gitter / 2;
+					
+					&:hover, &:focus {
+						text-decoration: none;
+						background-color: darken($gray, 10%);
+						color: white;
+					}
+				}
+			}
+		}
+		
+		&:hover {
+			.sub-menu {
+				max-height: 600px;
+			}
+		}
+		&.active a, &.active a:hover, &.active a:focus, a:hover {
+			color: darken($gray, 10%);
+			background-color: rgba(white, .8);
+		}
+	}
+}

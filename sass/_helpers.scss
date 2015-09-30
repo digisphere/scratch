@@ -1,0 +1,31 @@
+.marg {
+	margin: $gitter;
+}
+.marg-top {
+	margin-top: $gitter;
+}
+.marg-bottom {
+	margin-bottom: $gitter;
+}
+.marg-left {
+	margin-left: $gitter;
+}
+.marg-right {
+	margin-right: $gitter;
+}
+
+.pad {
+	padding: $gitter;
+}
+.pad-top {
+	padding-top: $gitter / 2;
+}
+.pad-bottom {
+	padding-bottom: $gitter / 2;
+}
+.pad-left {
+	padding-left: $gitter / 2;
+}
+.pad-right {
+	padding-right: $gitter / 2;
+}

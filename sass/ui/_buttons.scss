@@ -1,0 +1,69 @@
+.btn {
+	@include border-radius( $border-radius );
+	@include transition( all 250ms ease );
+	
+	&:hover, &:focus {
+		color: white;
+		background-color: $blue;
+	}
+	
+	// Default button
+	
+	&.btn-default {
+
+		&:hover , &:focus {
+			background-color: rgba( $gray, .5 );
+		}
+	}
+	
+	// Danger button
+	
+	&.btn-danger {
+		background-color: $red;
+		
+		&:hover , &:focus {
+			background-color: $red;
+		}
+	}
+	
+	// Warning button
+	
+	&.btn-warning {
+		background-color: $orange;
+		
+		&:hover , &:focus {
+			background-color: $orange;
+		}
+	}
+	
+	// Info button
+	
+	&.btn-info {
+		background-color: lighten($blue, 15%);
+		
+		&:hover , &:focus {
+			background-color: lighten($blue, 15%);
+		}
+	}
+	
+	// Success button
+	
+	&.btn-success {
+		background-color: $green;
+		
+		&:hover , &:focus {
+			background-color: $green;
+		}
+	}
+	
+	// Link button
+	
+	&.btn-link {
+		color: $blue;
+		background-color: transparent;
+
+		&:hover , &:focus {
+			background-color: $blue;
+		}
+	}
+}
