@@ -5,6 +5,15 @@
  * since 0.0.1
  */
 
+/*
+ * Activate Options panel
+ */
+if ( !function_exists( 'optionsframework_init' ) ) {
+	define( 'scratch_OptionsPanel', get_template_directory_uri() . '/inc/' );
+	require_once dirname( __FILE__ ) . '/inc/options-framework.php';
+	include 'inc/options-styles.php';
+}
+
 function scratch_theme_setup()  {
 
 	add_theme_support( 'menus' );
@@ -43,15 +52,6 @@ function scratch_title( $title, $sep ) {
 	return $title;
 }
 add_filter( 'wp_title', 'scratch_title', 10, 2 );
-
-/*
- * Activate Options panel
- */
-if ( !function_exists( 'optionsframework_init' ) ) {
-	define( 'scratch_OptionsPanel', get_template_directory_uri() . '/inc/' );
-	require_once dirname( __FILE__ ) . '/inc/options-framework.php';
-	include 'inc/options-styles.php';
-}
 
 /*
  * Disable WP Emoji support
