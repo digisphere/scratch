@@ -7,7 +7,6 @@
 	<?php wp_head();?>
 	<!-- HTML5 Shim for IE -->
 	<!--[if IE]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<?php get_styles(); ?>
 </head>
 
 <body <?php body_class();?> role="application">
