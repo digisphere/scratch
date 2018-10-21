@@ -1,2 +1,4 @@
-idea/
-sass-cache/
+.idea/
+.idea/*
+.sass-cache/
+.sass-cache/*
