@@ -1,23 +1,22 @@
 <?php
 
-/**
- * Library
- */
-$dir = glob(dirname( __FILE__ ) . '/lib/*.php');
-
-if( !empty($dir) ) {
-	foreach($dir as $file) {
-		require_once $file;
-	}
-}
+define('THEMEID', 'scratch');
 
 /**
- * Includes
+ * Require all external php files
+ *
+ * This section check if the $directories array is not empty
+ * and than require all php files that these directories contain.
  */
-$dir = glob(dirname( __FILE__ ) . '/inc/*.php');
+$directories = array('lib', 'inc');
 
-if( !empty($dir) ) {
-	foreach($dir as $file) {
-		require_once $file;
+
+if( !empty($directories) ) {
+	foreach($directories as $directory) {
+		$dir = glob(dirname( __FILE__ ) . '/'.$directory.'/*.php');
+
+		foreach ($dir as $file) {
+			require_once $file;
+		}
 	}
 }

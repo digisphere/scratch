@@ -3,47 +3,97 @@ function scratch_customizer_settings($wp_customize) {
 	/**
 	 * Sections
 	 */
-	$wp_customize->add_section( 'general' , array(
-		'title'      => "General",
-		'priority'   => 40,
-	) );
-	$wp_customize->add_section( 'design' , array(
-		'title'      => "Design",
-		'priority'   => 50,
-	) );
-	$wp_customize->add_section( 'header' , array(
-		'title'      => "Header",
-		'priority'   => 70,
-	) );
-	$wp_customize->add_section( 'footer' , array(
-		'title'      => "Footer",
-		'priority'   => 90,
-	) );
-	$wp_customize->add_section( 'side_contact' , array(
-		'title'      => "Side Contact",
-		'priority'   => 95,
-	) );
-	$wp_customize->add_section( 'social' , array(
-		'title'      => "Social",
-		'priority'   => 100,
-	) );
-	$wp_customize->add_section( 'google' , array(
-		'title'      => "Google",
-		'priority'   => 120,
-	) );
+	$sections = array(
+		array(
+			'section_id'    => 'general',
+			'args'          => array( 'title' => __('General Settings', THEMEID), 'priority' => 40, )
+		),
+		array(
+			'section_id'    => 'site_info',
+			'args'          => array( 'title' => __('Site Info', THEMEID), 'priority' => 41, )
+		),
+		array(
+			'section_id'    => 'design',
+			'args'          => array( 'title' => __('Design', THEMEID), 'priority' => 50, )
+		),
+		array(
+			'section_id'    => 'header',
+			'args'          => array( 'title' => __('Header', THEMEID), 'priority' => 60, )
+		),
+		array(
+			'section_id'    => 'footer',
+			'args'          => array( 'title' => __('Footer', THEMEID), 'priority'=> 70, )
+		),
+		array(
+			'section_id'    => 'social',
+			'args'          => array( 'title' => __('Side Social', THEMEID), 'priority' => 105, )
+		),
+		array(
+			'section_id'    => 'google',
+			'args'          => array( 'title' => __('Google', THEMEID), 'priority' => 100, )
+		),
+	);
+
+	if( !empty($sections) ){
+		foreach ($sections as $section) {
+			$wp_customize->add_section( $section['section_id'] , $section['args']);
+		}
+	}
+
+	$controls = array(
+		'logo' => array(
+			'settings' => array(
+				'default'        => '',
+				'capability'     => 'edit_theme_options',
+				'type'           => 'option',
+			),
+			'control' => array(
+				'label'      => __('Header Logo', 'scratch'),
+				'section'    => 'header',
+				'settings'   => 'logo',
+			),
+			'image' => true,
+		),
+		'phone' => array(
+			'settings' => array(
+				'capability'     => 'edit_theme_options',
+				'type'           => 'option',
+			),
+			'control' => array(
+				'label'      => __('Phone', 'scratch'),
+				'section'    => 'general',
+				'settings'   => 'phone',
+			),
+		),
+		'analytics' => array(
+			'settings' => array(
+				'capability'     => 'edit_theme_options',
+				'type'           => 'option',
+			),
+			'control' => array(
+				'label'      => __('Google Analytics Code', 'scratch'),
+				'section'    => 'google',
+				'settings'   => 'analytics',
+				'type'   => 'code_editor',
+			),
+		),
+	);
+
+	if( !empty($controls) ) {
+		foreach ($controls as $key => $control) {
+			$wp_customize->add_setting($key,  $control['settings']);
+
+			if(isset($control['image']) && $control['image'] == true) {
+				$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $key, $control['control']) );
+			}
+			else {
+				$wp_customize->add_control($key, $control['control']);
+			}
+		}
+	}
 
 	/**
-	 * Settings
-	 */
-	$wp_customize->add_setting('logo',  array(
-		'default'        => '',
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
-	$wp_customize->add_setting('analytics', array(
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
+
 	$wp_customize->add_setting('copyrights', array(
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -57,10 +107,7 @@ function scratch_customizer_settings($wp_customize) {
 		'type'           => 'option',
 	));
 
-	$wp_customize->add_setting('phone', array(
-		'capability'     => 'edit_theme_options',
-		'type'           => 'option',
-	));
+
 	$wp_customize->add_setting('email', array(
 		'capability'     => 'edit_theme_options',
 		'type'           => 'option',
@@ -70,21 +117,7 @@ function scratch_customizer_settings($wp_customize) {
 		'type'           => 'option',
 	));
 
-	/**
-	 * Controls
-	 */
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'logo',
-			array(
-				'label' => 'Header Logo',
-				'section' => 'header',
-				'settings' => 'logo',
-			) )
-	);
-	$wp_customize->add_control('phone', array(
-		'label'      => "Phone",
-		'section'    => 'general',
-		'settings'   => 'phone',
-	));
+
 	$wp_customize->add_control('email', array(
 		'label'      => "Email",
 		'section'    => 'general',
@@ -111,13 +144,7 @@ function scratch_customizer_settings($wp_customize) {
 		'section'    => 'side_contact',
 		'settings'   => 'sc_shortcode',
 	));
-	$wp_customize->add_control('analytics', array(
-		'label'      => "Add Google Analytics Code without the script tags",
-		'section'    => 'google',
-		'settings'   => 'analytics',
-		'type'       => 'code_editor',
-	));
-
+	 */
 
 }
-add_action('customize_register', 'triad_customizer_settings');
+add_action('customize_register', 'scratch_customizer_settings');

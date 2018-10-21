@@ -6,7 +6,7 @@
  * @since 1.0.0
  */
 function get_container() {
-	$container_option = of_get_option('container');
+	$container_option = get_option('container');
 	$container = ( $container_option ) ? $container_option : 'container';
 	
 	return $container;

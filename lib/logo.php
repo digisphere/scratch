@@ -11,7 +11,7 @@ function get_logo() {
 	$site_name	= get_bloginfo('name');
 	$site_desc	= get_bloginfo('description');
 	
-	$logo_option = of_get_option('logo');
+	$logo_option = get_option('logo');
 	
 	$link_class = ( $logo_option ) ? 'logo-image' : 'logo-text';
 	$bg_image	= ( $logo_option ) ? ' style="background-image: url(\'' . $logo_option . '\')"' : '';
